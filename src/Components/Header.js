@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 
 const Header = styled.header `
@@ -12,6 +12,7 @@ const Header = styled.header `
     display:flex;
     align-items: center;
     padding:0px 10px;
+    z-index: 10;
 `;
 
 const List = styled.ul`
@@ -20,9 +21,12 @@ const List = styled.ul`
 `;
 
 const Item = styled.li `
-    width:70px;
+    width:80px;
     height: 50px;
     text-align:center;
+    border-bottom: 3px solid 
+        ${props => props.current ? "#3498db" : "transparent"};
+    transition: border-bottom .5s ease-in-out;
 `;
 
 const SLink = styled(Link)`
@@ -32,21 +36,21 @@ const SLink = styled(Link)`
     justify-content: center;
 `;
 
-export default () => (
+export default withRouter(({ location: { pathname } }) => (
     <Header>
         <List>
-            <Item>
+            <Item current={pathname === "/"}>
                 <SLink to="/">ホーム</SLink>
             </Item>
-            <Item>
+            <Item current={pathname === "/tv"}>
                 <SLink to="/tv">TV番組</SLink>
             </Item>
-            <Item>
+            <Item current={pathname === "/search"}>
                 <SLink to="/search">検索</SLink>
             </Item>
-            <Item>
+            <Item current={pathname === "/detail"}>
                 <SLink to="/detail">詳細</SLink>
             </Item>
         </List>
     </Header>
-);
+));
