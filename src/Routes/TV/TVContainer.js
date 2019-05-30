@@ -1,5 +1,6 @@
 import React from "react";
 import TVPresenter from "./TVPresenter";
+import { tvApi } from "api";
 
 
 export default class extends React.Component {
@@ -10,6 +11,33 @@ export default class extends React.Component {
         error: null,
         loading: true
     };
+
+    async componentDidMount() {
+        try {
+            const {
+                data: { results: topRated }
+            } = await tvApi.topRated();
+            const {
+                data: { results: airingToday}
+            } = await tvApi.airingToday();
+            const {
+                data: { results: popular}
+            } = await tvApi.popular();
+            this.setState({
+                topRated,
+                airingToday,
+                popular
+            });
+        } catch {
+            this.setState({
+                error: "該当するTVの検索結果がありません。"
+            })
+        } finally {
+            this.setState({
+                loading: false
+            });
+        }
+    }
 
     render () {
         const {topRated, popular, airingToday, error, loading} = this.state;

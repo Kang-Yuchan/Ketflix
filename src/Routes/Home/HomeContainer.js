@@ -29,7 +29,7 @@ export default class extends React.Component {
             });
         } catch {
             this.setState({
-                error: "該当する検索結果がありません。"
+                error: "該当する映画の検索結果がありません。"
             })
         } finally {
             this.setState({
@@ -40,7 +40,6 @@ export default class extends React.Component {
 
     render() {
         const { nowPlaying, upcoming, popular, error, loading} = this.state;
-        console.log(this.state);
         return  (
             <HomePresenter 
                 nowPlaying={nowPlaying}
