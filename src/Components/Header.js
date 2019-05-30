@@ -48,9 +48,6 @@ export default withRouter(({ location: { pathname } }) => (
             <Item current={pathname === "/search"}>
                 <SLink to="/search">検索</SLink>
             </Item>
-            <Item current={pathname === "/detail"}>
-                <SLink to="/detail">詳細</SLink>
-            </Item>
         </List>
     </Header>
 ));
