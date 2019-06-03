@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Loader from "Components/Loader";
 import Section from "Components/Section";
+import ErrorMessage from "Components/ErrorMessage";
 
 const Container = styled.div`
     padding: 0px 20px;
@@ -53,6 +54,13 @@ const SearchPresenter = ({
                         <span key={show.id}>{show.name}</span>
                     ))}
                 </Section>
+            )}
+            {error && <ErrorMessage color="#e74c3c" text={error} />}
+            {tvResults && 
+                movieResults && 
+                tvResults.length === 0 && 
+                movieResults.length === 0 && (
+                    <ErrorMessage text="検索結果がみつかりません。" color="#95a5a6" />
             )}
         </> 
     )}
