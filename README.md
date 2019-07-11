@@ -4,10 +4,10 @@ ReactとES6を勉強しながら、Netflixのようなアプリを制作(Using T
 
 ## Screens
 
-- [ ] Home
-- [ ] TV Shows
-- [ ] Search
-- [ ] Detail
+- [x] Home
+- [x] TV Shows
+- [x] Search
+- [x] Detail
 
 ## API Verbs
 

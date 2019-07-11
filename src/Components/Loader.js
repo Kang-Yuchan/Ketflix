@@ -12,7 +12,7 @@ const Conatiner = styled.div`
 
 export default () => (
     <Conatiner>
-        <span role="img" aria-lable="Loading">
+        <span role="img" aria-label="Loading">
             ⏰
         </span>
     </Conatiner>
