@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.js": "/Ketflix/static/js/main.f941258b.chunk.js",
+    "main.js.map": "/Ketflix/static/js/main.f941258b.chunk.js.map",
+    "runtime~main.js": "/Ketflix/static/js/runtime~main.cd484ce0.js",
+    "runtime~main.js.map": "/Ketflix/static/js/runtime~main.cd484ce0.js.map",
+    "static/js/2.a8a27dee.chunk.js": "/Ketflix/static/js/2.a8a27dee.chunk.js",
+    "static/js/2.a8a27dee.chunk.js.map": "/Ketflix/static/js/2.a8a27dee.chunk.js.map",
+    "index.html": "/Ketflix/index.html",
+    "precache-manifest.0e256b42193f46eb13bbc99ce5af9e76.js": "/Ketflix/precache-manifest.0e256b42193f46eb13bbc99ce5af9e76.js",
+    "service-worker.js": "/Ketflix/service-worker.js",
+    "static/media/default.png": "/Ketflix/static/media/default.5fcc7d93.png"
+  }
+}
