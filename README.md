@@ -20,4 +20,4 @@ ReactとES6を勉強しながら、Netflixのようなアプリを制作(Using T
 - [x] Movie Detail
 - [x] Search (Movie, TV)
 
-Try it: https://gracious-lovelace-a55c2c.netlify.com/
+Try it: https://kang-yuchan.github.io/Ketflix/
