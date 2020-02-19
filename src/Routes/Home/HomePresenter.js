@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Section from "Components/Section";
 import Helmet from "react-helmet";
 import Loader from "../../Components/Loader";
-import Message from "../../Components/ErrorMessage";
+import ErrorMessage from "../../Components/ErrorMessage";
 import Poster from "../../Components/Poster";
 
 const Container = styled.div`
@@ -68,7 +68,7 @@ const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => (
               ))}
             </Section>
           )}
-          {error && <Message color="#e74c3c" text={error} />}
+          {error && <ErrorMessage color="#e74c3c" text={error} />}
         </Container>
       )}
     </>
