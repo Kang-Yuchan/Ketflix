@@ -20,4 +20,11 @@ ReactとES6を勉強しながら、Netflixのようなアプリを制作(Using T
 - [x] Movie Detail
 - [x] Search (Movie, TV)
 
+## Class Components change to Functional Components with Hooks API
+
+- [x] Home
+- [x] Search
+- [x] TV
+- [ ] Detail
+
 Try it: https://kang-yuchan.github.io/Ketflix/
