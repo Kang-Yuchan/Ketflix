@@ -1,47 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import TVPresenter from "./TVPresenter";
 import { tvApi } from "api";
 
+const TV = () => {
+    const [topRated, setTopRated] = useState(null);
+    const [popular, setPopular] = useState(null);
+    const [airingToday, setAiringToday] = useState(null);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-export default class extends React.Component {
-    state = {
-        topRated: null,
-        popular: null,
-        airingToday: null,
-        error: null,
-        loading: true
-    };
-
-    async componentDidMount() {
-        try {
-            const {
-                data: { results: topRated }
-            } = await tvApi.topRated();
-            const {
-                data: { results: airingToday}
-            } = await tvApi.airingToday();
-            const {
-                data: { results: popular}
-            } = await tvApi.popular();
-            this.setState({
-                topRated,
-                airingToday,
-                popular
-            });
-        } catch {
-            this.setState({
-                error: "該当するTVの検索結果がありません。"
-            })
-        } finally {
-            this.setState({
-                loading: false
-            });
+    useEffect(() => {
+        const fetchTvApi = async () => {
+            try {
+                const {
+                    data: { results: topRated }
+                } = await tvApi.topRated();
+                const {
+                    data: { results: airingToday}
+                } = await tvApi.airingToday();
+                const {
+                    data: { results: popular}
+                } = await tvApi.popular();
+                setTopRated(topRated);
+                setAiringToday(airingToday);
+                setPopular(popular);
+            } catch {
+                setError("該当するTVの検索結果がありません。");
+            } finally {
+                setLoading(false);
+            }
         }
-    }
+        fetchTvApi();
+    })
 
-    render () {
-        const {topRated, popular, airingToday, error, loading} = this.state;
-        return  (
+    return  (
         <TVPresenter 
             topRated={topRated}
             popular={popular}
@@ -49,7 +41,7 @@ export default class extends React.Component {
             error={error}
             loading={loading}
         />
-
-        );
-    }    
+    );
 }
+
+export default TV;

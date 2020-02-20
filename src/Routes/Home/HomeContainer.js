@@ -1,18 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import HomePresenter from "./HomePresenter";
 import { moviesApi } from "api";
 
-export default class extends React.Component {
-    state = {
-        nowPlaying: null,
-        upcoming: null,
-        popular: null,
-        error: null,
-        loading: true
-    };
+const Home = () => {
+    const [nowPlaying, setNowPlaying] = useState(null);
+    const [upcoming, setUpcoming] = useState(null);
+    const [popular, setPopular] = useState(null);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-    async componentDidMount() {
-        try {
+    useEffect(() => {
+       const fetchMovieApi = async () => { 
+           try {
             const {
                 data: { results: nowPlaying }
             } = await moviesApi.nowPlaying();
@@ -22,32 +21,27 @@ export default class extends React.Component {
             const {
                 data: { results: popular}
             } = await moviesApi.popular();
-            this.setState({
-                nowPlaying,
-                upcoming,
-                popular
-            });
+            setNowPlaying(nowPlaying)
+            setUpcoming(upcoming);
+            setPopular(popular);
         } catch {
-            this.setState({
-                error: "該当する映画の検索結果がありません。"
-            })
+            setError("該当する映画の検索結果がありません。");
         } finally {
-            this.setState({
-                loading: false
-            })
+            setLoading(false);
         }
     }
+    fetchMovieApi();
+    })
 
-    render() {
-        const { nowPlaying, upcoming, popular, error, loading} = this.state;
-        return  (
-            <HomePresenter 
-                nowPlaying={nowPlaying}
-                upcoming={upcoming}
-                popular={popular}
-                error={error}
-                loading={loading}
-            />
-        );
-     }
+    return  (
+        <HomePresenter 
+            nowPlaying={nowPlaying}
+            upcoming={upcoming}
+            popular={popular}
+            error={error}
+            loading={loading}
+        />
+    );
 }
+
+export default Home;
