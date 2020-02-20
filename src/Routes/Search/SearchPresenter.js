@@ -33,7 +33,7 @@ const SearchPresenter = ({
 }) => (
   <Container>
     <Helmet>
-      <title>Search | Ketflix</title>
+      <title>Search | Nomflix</title>
     </Helmet>
     <Form onSubmit={handleSubmit}>
       <Input
@@ -80,7 +80,7 @@ const SearchPresenter = ({
           movieResults &&
           tvResults.length === 0 &&
           movieResults.length === 0 && (
-            <Message text="検索結果が見つかりません。" color="#95a5a6" />
+            <Message text="Nothing found" color="#95a5a6" />
           )}
       </>
     )}
