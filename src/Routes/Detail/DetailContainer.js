@@ -59,14 +59,14 @@ import { moviesApi, tvApi } from "api";
 //}
 
 const Detail = (props) => {
-    const { location : { pathname }} = props;
+    const { location : { pathname } } = props;
     const [result, setResult] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
     const [isMovie, setIsMovie] = useState(pathname.includes("/movie/"));
 
     useEffect(() => {
-        const fetchDetailApi = async (props) => {
+        const fetchDetailApi = async () => {
             const { match: { params: { id }}, history: { push } } = props;
             const parsedId = parseInt(id);
             if(isNaN(parsedId)) {
@@ -87,7 +87,6 @@ const Detail = (props) => {
                 setLoading(false);
                 setResult(result);
             }
-
         }
         fetchDetailApi();
     } )
