@@ -25,6 +25,6 @@ ReactとES6を勉強しながら、Netflixのようなアプリを制作(Using T
 - [x] Home
 - [x] Search
 - [x] TV
-- [ ] Detail
+- [x] Detail
 
 Try it: https://kang-yuchan.github.io/Ketflix/

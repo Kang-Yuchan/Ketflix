@@ -59,35 +59,36 @@ import { moviesApi, tvApi } from "api";
 //}
 
 const Detail = (props) => {
-    const { location : { pathname }} = props;
+    const { location : { pathname } } = props;
     const [result, setResult] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [isMovie, setIsMovie] = useState(pathname.includes("/movie/"));
 
     useEffect(() => {
-        const fetchDetailApi = async (props) => {
+        const fetchDetailApi = async () => {
             const { match: { params: { id }}, history: { push } } = props;
             const parsedId = parseInt(id);
+            const isMovie = pathname.includes('/movie/')
             if(isNaN(parsedId)) {
                 return push("/");
             }
-            let result = null;
-
             try {
-                if(isMovie) {
-                    ({ data: result } = await moviesApi.movieDetail(parsedId));
-                } else {
-                    ({ data: result } = await tvApi.showDetail(parsedId));
-                }
-              
+                if (id) {
+					if (isMovie) {
+						const { data: result } = await moviesApi.movieDetail(parsedId);
+						setResult(result);
+					} else {
+						const { data: result } = await tvApi.showDetail(parsedId);
+						setResult(result);
+					}
+				} else {
+					throw Error("該当するidがありません。");
+				}
             } catch {
                 setError("該当する検索結果がありません。");
             } finally {
                 setLoading(false);
-                setResult(result);
             }
-
         }
         fetchDetailApi();
     } )
